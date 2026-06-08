@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0B1B2B;
+  --color-ink-soft: #1E3A5F;
+  --color-accent: #16A34A;
+  --color-accent-hover: #15803D;
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #F4F6F8;
+  --color-text: #475569;
+  --color-text-strong: #0F172A;
+  --color-border: #E2E8F0;
+
+  --font-sans: var(--font-manrope), "Manrope", ui-sans-serif, system-ui,
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+
+  --radius-card: 0.75rem;
+  --radius-input: 0.5rem;
+
+  --shadow-card: 0 8px 24px rgba(11, 27, 43, 0.06);
+  --shadow-card-hover: 0 12px 32px rgba(11, 27, 43, 0.10);
+}
+
+:root {
+  color-scheme: light only;
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.01em;
+  }
+
+  /* Prevent white text from leaking into light-background sections */
+  .bg-white,
+  .bg-\[var\(--color-bg\)\],
+  .bg-\[var\(--color-bg-alt\)\] {
+    color: var(--color-text);
+  }
+}
+
+::selection {
+  background: var(--color-accent);
+  color: white;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ────────────────────────────────────────────────────────────────────
+   Mobile hero CSS-only scene fallback
+   No JS dependency. Total ~4.1s, single run, fill-mode forwards.
+   ──────────────────────────────────────────────────────────────────── */
+@keyframes mobileHeroScene1 {
+  0%   { opacity: 1; transform: translateY(0); }
+  32%  { opacity: 1; transform: translateY(0); }
+  40%  { opacity: 0; transform: translateY(-12px); }
+  100% { opacity: 0; transform: translateY(-12px); }
+}
+@keyframes mobileHeroScene2 {
+  0%   { opacity: 0; transform: translateY(14px); }
+  34%  { opacity: 0; transform: translateY(14px); }
+  42%  { opacity: 1; transform: translateY(0); }
+  74%  { opacity: 1; transform: translateY(0); }
+  82%  { opacity: 0; transform: translateY(-12px); }
+  100% { opacity: 0; transform: translateY(-12px); }
+}
+@keyframes mobileHeroScene3 {
+  0%   { opacity: 0; transform: translateY(14px); }
+  76%  { opacity: 0; transform: translateY(14px); }
+  84%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.mobile-hero-scene-1,
+.mobile-hero-scene-2,
+.mobile-hero-scene-3 {
+  animation-duration: 4.1s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.mobile-hero-scene-1 {
+  opacity: 1;
+  animation-name: mobileHeroScene1;
+}
+.mobile-hero-scene-2 {
+  opacity: 0;
+  animation-name: mobileHeroScene2;
+}
+.mobile-hero-scene-3 {
+  opacity: 0;
+  animation-name: mobileHeroScene3;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-hero-scene-1,
+  .mobile-hero-scene-2,
+  .mobile-hero-scene-3 {
+    animation: none;
+  }
+  .mobile-hero-scene-1 { opacity: 1; }
+  .mobile-hero-scene-2 { opacity: 0; }
+  .mobile-hero-scene-3 { opacity: 0; }
+}

@@ -1,7 +1,30 @@
 {
   "permissions": {
     "allow": [
-      "PowerShell(npm *)"
+      "PowerShell(npm *)",
+      "Bash(cp -r imagenes/Logo.png public/imagenes/)",
+      "Bash(cp -r \"imagenes/compagnons-Im_cQ6hQo10-unsplash.jpg\" public/imagenes/)",
+      "Bash(node *)",
+      "Bash(npm run *)",
+      "Bash(curl -sf http://localhost:3000/preview/why-bento)",
+      "Bash(npm install *)",
+      "WebFetch(domain:www.whistlecorp.com)",
+      "Bash(rsync -a --exclude='node_modules' --exclude='.next' --exclude='.git' --exclude='_backups' --exclude='external' ./ _backups/whistlecorp-before-humanized-ui/)",
+      "Bash(curl *)",
+      "Bash(command -v ffmpeg)",
+      "Bash(command -v ffprobe)",
+      "Bash(ffprobe -v error -show_streams -show_format public/videos/whistlecorp-scroll.mp4)",
+      "Bash(ffmpeg -version)",
+      "Bash(ffprobe -version)",
+      "Bash(cp -r public/videos _backups/whistlecorp-before-clean-trimmed-video-frames/public/)",
+      "Bash(cp -r public/scroll-frames _backups/whistlecorp-before-clean-trimmed-video-frames/public/)",
+      "Bash([ -e \"_review_package/$x\" ])",
+      "PowerShell(Add-Type -AssemblyName System.IO.Compression.FileSystem; $zip = [System.IO.Compression.ZipFile]::OpenRead\\(\"whistlecorp-review.zip\"\\); $zip.Entries | Where-Object { $_.FullName -match '.next' } | ForEach-Object { Write-Output $_.FullName }; $zip.Dispose\\(\\))",
+      "PowerShell(Get-NetIPAddress *)",
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(netstat -ano)",
+      "Bash(npx next *)",
+      "PowerShell(\\(Get-NetIPAddress -AddressFamily IPv4 | Where-Object {$_.InterfaceAlias -notmatch 'Loopback' -and $_.IPAddress -notmatch '^169'} | Select-Object -ExpandProperty IPAddress\\) -join ',')"
     ]
   }
 }

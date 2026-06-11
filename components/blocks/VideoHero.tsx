@@ -200,7 +200,7 @@ export function VideoHero({
   return (
     <section
       aria-label={ariaLabel}
-      className="relative w-full overflow-hidden bg-[var(--color-ink)] min-h-[64svh] md:min-h-[calc(100dvh-72px)]"
+      className="relative w-full overflow-hidden bg-[var(--color-ink)] min-h-[72svh] md:min-h-[calc(100dvh-72px)]"
     >
       {/* Desktop video — React-synced for overlay scenes */}
       {!videoError && (
@@ -255,57 +255,21 @@ export function VideoHero({
         }}
       />
 
-      {/* Visibility animation layered on top of the opacity animation from
-          globals.css. `visibility: hidden` makes the whole layer (including
-          the CTA link) non-interactive, so invisible scenes never capture
-          taps. Defined inline so we don't have to touch globals.css. */}
-      <style>{`
-        .hero-vis-1,
-        .hero-vis-2,
-        .hero-vis-3 {
-          animation-duration: 4.1s;
-          animation-timing-function: linear;
-          animation-iteration-count: 1;
-          animation-fill-mode: forwards;
-        }
-        .hero-vis-1 { visibility: visible; animation-name: heroVis1; }
-        .hero-vis-2 { visibility: hidden;  animation-name: heroVis2; }
-        .hero-vis-3 { visibility: hidden;  animation-name: heroVis3; }
-        @keyframes heroVis1 {
-          0%, 40%        { visibility: visible; }
-          40.001%, 100%  { visibility: hidden; }
-        }
-        @keyframes heroVis2 {
-          0%, 34%        { visibility: hidden; }
-          34.001%, 82%   { visibility: visible; }
-          82.001%, 100%  { visibility: hidden; }
-        }
-        @keyframes heroVis3 {
-          0%, 76%        { visibility: hidden; }
-          76.001%, 100%  { visibility: visible; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .hero-vis-1, .hero-vis-2, .hero-vis-3 { animation: none; }
-          .hero-vis-1 { visibility: visible; }
-          .hero-vis-2, .hero-vis-3 { visibility: hidden; }
-        }
-      `}</style>
-
       {/* CSS-only scene overlays — desktop + mobile, no React/hydration dep */}
       <div aria-hidden>
         <CssHeroScene
-          className="hero-scene-1 hero-vis-1"
+          className="hero-scene-1"
           eyebrow="SOFTWARE · AUTOMATIZACIÓN · CLOUD"
           title="Si tu equipo todavía depende de Excel, WhatsApp y correos para operar, podemos ayudarte a ordenarlo."
         />
         <CssHeroScene
-          className="hero-scene-2 hero-vis-2"
+          className="hero-scene-2"
           eyebrow="AUTOMATIZACIÓN ÚTIL"
           title="Tomamos tareas repetitivas y las convertimos en procesos que se ejecutan solos."
           text="Menos tareas manuales. Más orden y control sobre tu operación."
         />
         <CssHeroScene
-          className="hero-scene-3 hero-vis-3"
+          className="hero-scene-3"
           eyebrow="WHISTLECORP"
           title="Construyamos una solución útil desde el primer día."
           cta={{ label: "Solicitar diagnóstico", href: "/contacto" }}
@@ -346,7 +310,7 @@ function CssHeroScene({
 }) {
   return (
     <div
-      className={`pointer-events-none absolute inset-0 z-20 flex items-start justify-start p-5 pt-16 md:items-center md:justify-center md:pt-5 ${className}`}
+      className={`pointer-events-none absolute inset-0 z-20 flex items-start justify-start p-5 pt-24 md:items-center md:justify-center md:pt-5 ${className}`}
     >
       <div
         className="w-full max-w-[640px] rounded-2xl p-5"

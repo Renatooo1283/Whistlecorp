@@ -200,7 +200,7 @@ export function VideoHero({
   return (
     <section
       aria-label={ariaLabel}
-      className="relative w-full overflow-hidden bg-[var(--color-ink)] min-h-[calc(100dvh-64px)] md:min-h-[calc(100dvh-72px)]"
+      className="relative w-full overflow-hidden bg-[var(--color-ink)] min-h-[72svh] md:min-h-[calc(100dvh-72px)]"
     >
       {/* Desktop video — React-synced for overlay scenes */}
       {!videoError && (
@@ -310,7 +310,7 @@ function CssHeroScene({
 }) {
   return (
     <div
-      className={`pointer-events-none absolute inset-0 z-20 flex items-center justify-center p-5 ${className}`}
+      className={`pointer-events-none absolute inset-0 z-20 flex items-start justify-start p-5 pt-24 md:items-center md:justify-center md:pt-5 ${className}`}
     >
       <div
         className="w-full max-w-[640px] rounded-2xl p-5"
